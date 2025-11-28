@@ -1,0 +1,46 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+*.egg-info/
+dist/
+build/
+
+# Audio files
+*.wav
+*.mp3
+*.flac
+*.m4a
+*.ogg
+*.aac
+
+# Output directories
+output/
+temp/
+input/
+
+# Logs
+*.log
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Processing markers
+*.processing
+*.done
+
+# Jupyter
+.ipynb_checkpoints/

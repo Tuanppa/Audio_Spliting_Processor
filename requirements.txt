@@ -1,0 +1,26 @@
+# Core dependencies for Audio Processing
+openai-whisper==20231117
+stable-ts==2.15.4
+
+# Audio processing
+pydub==0.25.1
+soundfile==0.12.1
+librosa==0.10.1
+
+# NLP for sentence splitting
+nltk==3.8.1
+
+# Data validation and models
+pydantic==2.5.0
+
+# Progress bars and logging
+tqdm==4.66.1
+
+# Parallel processing
+joblib==1.3.2
+
+# PyTorch (adjust based on your system)
+# For CPU: torch==2.1.0
+# For CUDA 11.8: torch==2.1.0+cu118 --index-url https://download.pytorch.org/whl/cu118
+torch==2.1.0
+torchaudio==2.1.0

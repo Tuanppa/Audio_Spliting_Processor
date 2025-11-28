@@ -1,0 +1,116 @@
+# Audio Text Segmentation Configuration
+
+# Speech-to-Text Settings
+stt:
+  # Model: tiny, base, small, medium, large, large-v2, large-v3
+  model: "medium"  
+  
+  # Engine: whisper (chính xác hơn) hoặc faster-whisper (nhanh hơn)
+  engine: "faster-whisper"
+  
+  # Language: vi (Vietnamese), en (English), auto (tự động phát hiện)
+  language: "vi"
+  
+  # Device: cuda (GPU) hoặc cpu
+  device: "cpu"
+  
+  # Compute type cho faster-whisper: int8, float16, float32
+  compute_type: "int8"
+  
+  # Có lấy timestamp từng từ không (chậm hơn nhưng chính xác hơn)
+  word_timestamps: true
+
+# Sentence Splitting Settings
+sentence_splitter:
+  # Minimum sentence length (ký tự)
+  min_length: 10
+  
+  # Maximum sentence length (ký tự)
+  max_length: 200
+  
+  # Có merge câu ngắn với câu kế tiếp không
+  merge_short_sentences: true
+  
+  # Danh sách dấu kết thúc câu
+  sentence_endings:
+    - "."
+    - "?"
+    - "!"
+    - "。"  # Dấu chấm tiếng Trung (nếu có)
+
+# Audio Segmentation Settings
+audio_segmentation:
+  # Padding trước và sau mỗi segment (giây)
+  padding_before: 0.1
+  padding_after: 0.1
+  
+  # Độ dài tối thiểu của segment (giây)
+  min_duration: 0.5
+  
+  # Độ dài tối đa của segment (giây) 
+  max_duration: 15.0
+  
+  # Sample rate output (Hz) - null để giữ nguyên
+  output_sample_rate: 16000
+  
+  # Audio format: wav, mp3, flac
+  output_format: "wav"
+  
+  # Audio channels: 1 (mono), 2 (stereo)
+  output_channels: 1
+
+# Alignment Settings (căn chỉnh timestamp chính xác)
+alignment:
+  # Method: whisper (dùng timestamps từ whisper) hoặc aeneas (force alignment)
+  method: "whisper"
+  
+  # Có optimize timestamp dựa trên silence detection không
+  optimize_boundaries: true
+  
+  # Ngưỡng âm thanh để detect silence (dB)
+  silence_threshold: -40
+
+# Export Settings
+export:
+  # Có tạo manifest.json không
+  create_manifest: true
+  
+  # Có tạo metadata.csv không
+  create_csv: true
+  
+  # Có tạo full_transcript.txt không
+  create_full_transcript: true
+  
+  # Format đánh số file: {name}_{index:04d} hoặc {index:04d}_{name}
+  naming_pattern: "segment_{index:04d}"
+  
+  # Có bao gồm confidence score trong metadata không
+  include_confidence: true
+
+# Processing Settings
+processing:
+  # Batch size cho xử lý nhiều file
+  batch_size: 1
+  
+  # Số worker threads
+  num_workers: 1
+  
+  # Có hiện progress bar không
+  show_progress: true
+  
+  # Có lưu file tạm không (để debug)
+  keep_temp_files: false
+  
+  # Thư mục tạm
+  temp_dir: "./temp"
+
+# Output Settings
+output:
+  # Thư mục output mặc định
+  default_dir: "./output"
+  
+  # Có tạo subfolder theo tên file input không
+  create_subfolder: true
+  
+  # Có ghi đè file cũ không
+  overwrite: false
